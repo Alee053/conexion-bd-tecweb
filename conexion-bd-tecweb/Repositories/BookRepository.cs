@@ -1,8 +1,8 @@
-﻿using apiwithdb.Models;
-using apiwithdb.Data;
+﻿using conexion_bd_tecweb.Models;
+using conexion_bd_tecweb.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace apiwithdb.Repositories
+namespace conexion_bd_tecweb.Repositories
 {
     public class BookRepository : IBookRepository
     {

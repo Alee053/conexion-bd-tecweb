@@ -1,7 +1,7 @@
-﻿using apiwithdb.Models;
+﻿using conexion_bd_tecweb.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace apiwithdb.Data
+namespace conexion_bd_tecweb.Data
 {
     public class AppDbContext:DbContext
     {

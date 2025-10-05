@@ -6,10 +6,10 @@ namespace conexion_bd_tecweb.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class BooksController: ControllerBase
+    public class TicketsController: ControllerBase
     {
-        private readonly IBookService _service;
-        public BooksController(IBookService service)
+        private readonly ITicketService _service;
+        public TicketsController(ITicketService service)
         {
             _service = service;
         }
@@ -23,18 +23,18 @@ namespace conexion_bd_tecweb.Controllers
         [HttpGet("{id:guid}")]
         public async  Task<IActionResult> GetOne(Guid id)
         {
-            var book = _service.GetById(id);
-            return await book == null
-                ? NotFound(new { error = "Book not found", status = 404 })
-                : Ok(book);
+            var ticket = _service.GetById(id);
+            return await ticket == null
+                ? NotFound(new { error = "Ticket not found", status = 404 })
+                : Ok(ticket);
         }
 
         [HttpPost]
-        public async  Task<IActionResult> Create([FromBody] CreateBookDto dto)
+        public async  Task<IActionResult> Create([FromBody] CreateTicketDto dto)
         {
             if (!ModelState.IsValid) return ValidationProblem(ModelState);
-            var book = await _service.Create(dto);
-            return CreatedAtAction(nameof(GetOne), new { id = book.Id }, book);
+            var ticket = await _service.Create(dto);
+            return CreatedAtAction(nameof(GetOne), new { id = ticket.Id }, ticket);
         }
 
         [HttpDelete("{id:guid}")]
@@ -43,7 +43,7 @@ namespace conexion_bd_tecweb.Controllers
             var success = _service.Delete(id);
             return await success
                 ? NoContent()
-                : NotFound(new { error = "Book not found", status = 404 });
+                : NotFound(new { error = "Ticket not found", status = 404 });
         }
     }
 }
