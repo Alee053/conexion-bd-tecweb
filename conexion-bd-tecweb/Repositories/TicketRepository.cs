@@ -8,6 +8,10 @@ namespace conexion_bd_tecweb.Repositories
     {
         private readonly AppDbContext _context;
 
+        public TicketRepository(AppDbContext context)
+        {
+            _context = context;
+        }
         public async Task Add(Ticket ticket)
         {   
            await _context.AddAsync(ticket);
