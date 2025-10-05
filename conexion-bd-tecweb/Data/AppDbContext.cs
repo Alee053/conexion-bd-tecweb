@@ -9,6 +9,7 @@ namespace apiwithdb.Data
         
         }
         public DbSet<Book> Books => Set<Book>();
+        public DbSet<Ticket> Ticket => Set<Ticket>();
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Book>(b =>
@@ -16,6 +17,11 @@ namespace apiwithdb.Data
                 b.HasKey(x => x.Id);
                 b.Property(x => x.Title).IsRequired().HasMaxLength(200);
                 b.Property(x => x.Year).IsRequired();
+            });
+            modelBuilder.Entity<Ticket>(b =>
+            {
+                b.HasKey(x => x.Id);
+                b.Property(x => x.Notes);
             });
         }
     }
