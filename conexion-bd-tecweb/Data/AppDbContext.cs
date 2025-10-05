@@ -9,7 +9,7 @@ namespace apiwithdb.Data
         
         }
         public DbSet<Book> Books => Set<Book>();
-        public DbSet<Ticket> Ticket => Set<Ticket>();
+        public DbSet<Ticket> Tickets => Set<Ticket>();
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Book>(b =>
