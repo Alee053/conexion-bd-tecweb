@@ -15,6 +15,7 @@ namespace conexion_bd_tecweb.Repositories
         public async Task Add(Ticket ticket)
         {   
            await _context.AddAsync(ticket);
+           await _context.SaveChangesAsync();
         }
 
         public async Task Delete(Guid id)
@@ -24,6 +25,7 @@ namespace conexion_bd_tecweb.Repositories
             {
                 _context.Remove(ticket);
             }
+            await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Ticket>> GetAll()
