@@ -1,7 +1,8 @@
-﻿using apiwithdb.Models;
+﻿using conexion_bd_tecweb.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
-namespace apiwithdb.Data
+namespace conexion_bd_tecweb.Data
 {
     public class AppDbContext:DbContext
     {
@@ -9,6 +10,7 @@ namespace apiwithdb.Data
         
         }
         public DbSet<Book> Books => Set<Book>();
+        public DbSet<Guest> Guests => Set<Guest>();
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Book>(b =>
@@ -16,6 +18,12 @@ namespace apiwithdb.Data
                 b.HasKey(x => x.Id);
                 b.Property(x => x.Title).IsRequired().HasMaxLength(200);
                 b.Property(x => x.Year).IsRequired();
+            });
+            modelBuilder.Entity<Guest>(b =>
+            {
+                b.HasKey(x => x.Id);
+                b.Property(x => x.FullName).IsRequired().HasMaxLength(200);
+                b.Property(x => x.Confirmed).IsRequired();
             });
         }
     }
