@@ -27,5 +27,13 @@ namespace conexion_bd_tecweb.Repositories
             }
             await _context.SaveChangesAsync();
         }
+        public async Task<IEnumerable<Guest>> GetAll()
+        {
+            return await _context.Guests.ToListAsync();
+        }
+        public async Task<Guest?> GetById(Guid id)
+        {
+            return await _context.Guests.FirstOrDefaultAsync(x => x.Id == id);
+        }
     }
 }
