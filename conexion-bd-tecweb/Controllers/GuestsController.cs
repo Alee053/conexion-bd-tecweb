@@ -1,7 +1,7 @@
-﻿using apiwithdb.Models.dtos;
-using apiwithdb.Services;
-using conexion_bd_tecweb.Models.dtos;
+﻿using conexion_bd_tecweb.Models.dtos;
+using conexion_bd_tecweb.Services;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace conexion_bd_tecweb.Controllers
 {
