@@ -31,5 +31,16 @@ namespace conexion_bd_tecweb.Services
             await _repo.Delete(id);
             return true;
         }
+
+        public async Task<IEnumerable<Guest>> GetAll()
+        {
+            return await _repo.GetAll();
+        }
+
+        public async Task<Guest?> GetById(Guid id)
+        {
+            var guest = _repo.GetById(id);
+            return await guest;
+        }
     }
 }
