@@ -1,13 +1,12 @@
-﻿using apiwithdb.Models;
-using conexion_bd_tecweb.Models;
+﻿using conexion_bd_tecweb.Models;
 
-namespace apiwithdb.Repositories
+namespace conexion_bd_tecweb.Repositories
 {
     public interface IEventRepository
     {
-        IEnumerable<Event> GetAll();
-        Event? GetById(Guid id);
-        void Add(Event ev);
-        void Delete(Guid id);
+        Task<IEnumerable<Event>> GetAll();
+        Task<Event?> GetById(Guid id);
+        Task Add(Event ev);
+        Task Delete(Guid id);
     }
 }

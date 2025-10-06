@@ -1,9 +1,9 @@
-﻿using apiwithdb.Models.dtos;
-using apiwithdb.Services;
+﻿using conexion_bd_tecweb.Models.dtos;
+using conexion_bd_tecweb.Services;
 using conexion_bd_tecweb.Models.dtos;
 using Microsoft.AspNetCore.Mvc;
 
-namespace apiwithdb.Controllers
+namespace conexion_bd_tecweb.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -17,33 +17,33 @@ namespace apiwithdb.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            return Ok(_service.GetAll());
+            return Ok(await _service.GetAll());
         }
 
         [HttpGet("{id:guid}")]
-        public IActionResult GetOne(Guid id)
+        public async Task<IActionResult> GetOne(Guid id)
         {
-            var ev = _service.GetById(id);
+            var ev = await _service.GetById(id);
             return ev == null
                 ? NotFound(new { error = "Event not found", status = 404 })
                 : Ok(ev);
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CreateEventDto dto)
+        public async Task<IActionResult> Create([FromBody] CreateEventDto dto)
         {
             if (!ModelState.IsValid) return ValidationProblem(ModelState);
 
-            var ev = _service.Create(dto);
+            var ev = await _service.Create(dto);
             return CreatedAtAction(nameof(GetOne), new { id = ev.Id }, ev);
         }
 
         [HttpDelete("{id:guid}")]
-        public IActionResult Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
-            var success = _service.Delete(id);
+            var success = await _service.Delete(id);
             return success
                 ? NoContent()
                 : NotFound(new { error = "Event not found", status = 404 });

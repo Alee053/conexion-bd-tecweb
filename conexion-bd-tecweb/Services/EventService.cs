@@ -1,10 +1,8 @@
-﻿using apiwithdb.Models;
-using apiwithdb.Models.dtos;
-using apiwithdb.Repositories;
-using conexion_bd_tecweb.Models;
+﻿using conexion_bd_tecweb.Models;
 using conexion_bd_tecweb.Models.dtos;
+using conexion_bd_tecweb.Repositories;
 
-namespace apiwithdb.Services
+namespace conexion_bd_tecweb.Services
 {
     public class EventService : IEventService
     {
@@ -15,7 +13,7 @@ namespace apiwithdb.Services
             _repo = repo;
         }
 
-        public Event Create(CreateEventDto dto)
+        public async Task<Event> Create(CreateEventDto dto)
         {
             if (dto.Capacity <= 0)
             {
@@ -35,27 +33,27 @@ namespace apiwithdb.Services
                 Capacity = dto.Capacity
             };
 
-            _repo.Add(ev);
+            await _repo.Add(ev);
             return ev;
         }
 
-        public bool Delete(Guid id)
+        public async Task<bool> Delete(Guid id)
         {
-            var existing = _repo.GetById(id);
+            var existing = await _repo.GetById(id);
             if (existing == null) return false;
 
-            _repo.Delete(id);
+           await  _repo.Delete(id);
             return true;
         }
 
-        public IEnumerable<Event> GetAll()
+        public async Task<IEnumerable<Event>> GetAll()
         {
-            return _repo.GetAll();
+            return await _repo.GetAll();
         }
 
-        public Event? GetById(Guid id)
+        public async Task<Event?> GetById(Guid id)
         {
-            return _repo.GetById(id);
+            return await _repo.GetById(id);
         }
     }
 }

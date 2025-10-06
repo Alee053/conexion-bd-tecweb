@@ -24,7 +24,7 @@ namespace conexion_bd_tecweb.Services
         }
         public async Task<bool> Delete(Guid id)
         {
-            var existing = _repo.GetById(id);
+            var existing = await _repo.GetById(id);
             if (existing == null) return false;
             await _repo.Delete(id);
             return true;

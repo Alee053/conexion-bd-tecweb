@@ -23,8 +23,8 @@ namespace conexion_bd_tecweb.Controllers
         [HttpGet("{id:guid}")]
         public async  Task<IActionResult> GetOne(Guid id)
         {
-            var ticket = _service.GetById(id);
-            return await ticket == null
+            var ticket = await _service.GetById(id);
+            return ticket == null
                 ? NotFound(new { error = "Ticket not found", status = 404 })
                 : Ok(ticket);
         }
@@ -40,8 +40,8 @@ namespace conexion_bd_tecweb.Controllers
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var success = _service.Delete(id);
-            return await success
+            var success = await _service.Delete(id);
+            return success
                 ? NoContent()
                 : NotFound(new { error = "Ticket not found", status = 404 });
         }

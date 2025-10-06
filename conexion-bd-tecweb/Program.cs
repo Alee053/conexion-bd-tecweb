@@ -23,6 +23,9 @@ builder.Services.AddScoped<conexion_bd_tecweb.Repositories.IGuestRepository, con
 builder.Services.AddScoped<conexion_bd_tecweb.Services.ITicketService, conexion_bd_tecweb.Services.TicketService>();
 builder.Services.AddScoped<conexion_bd_tecweb.Repositories.ITicketRepository, conexion_bd_tecweb.Repositories.TicketRepository>();
 
+builder.Services.AddScoped<conexion_bd_tecweb.Services.IEventService, conexion_bd_tecweb.Services.EventService>();
+builder.Services.AddScoped<conexion_bd_tecweb.Repositories.IEventRepository, conexion_bd_tecweb.Repositories.EventRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

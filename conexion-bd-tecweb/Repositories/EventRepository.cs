@@ -1,8 +1,8 @@
-﻿using apiwithdb.Data;
-using apiwithdb.Models;
+﻿using conexion_bd_tecweb.Data;
 using conexion_bd_tecweb.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace apiwithdb.Repositories
+namespace conexion_bd_tecweb.Repositories
 {
     public class EventRepository : IEventRepository
     {
@@ -13,29 +13,29 @@ namespace apiwithdb.Repositories
             _context = context;
         }
 
-        public IEnumerable<Event> GetAll()
+        public async Task<IEnumerable<Event>> GetAll()
         {
-            return _context.Events.ToList();
+            return await _context.Events.ToListAsync();
         }
 
-        public Event? GetById(Guid id)
+        public async Task<Event?> GetById(Guid id)
         {
-            return _context.Events.FirstOrDefault(e => e.Id == id);
+            return await _context.Events.FirstOrDefaultAsync(e => e.Id == id);
         }
 
-        public void Add(Event ev)
+        public async Task Add(Event ev)
         {
-            _context.Events.Add(ev);
-            _context.SaveChanges();
+            await _context.Events.AddAsync(ev);
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(Guid id)
+        public async Task Delete(Guid id)
         {
-            var ev = _context.Events.FirstOrDefault(e => e.Id == id);
+            var ev = await _context.Events.FirstOrDefaultAsync(e => e.Id == id);
             if (ev != null)
-            {
+            {   
                 _context.Events.Remove(ev);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
         }
     }
