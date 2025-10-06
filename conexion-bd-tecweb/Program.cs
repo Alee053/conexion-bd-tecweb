@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -11,18 +10,18 @@ builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer(); // Required for minimal APIs
 builder.Services.AddSwaggerGen();
 
-
 builder.Services.AddDbContext<conexion_bd_tecweb.Data.AppDbContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("Default"))
 );
 
-
 builder.Services.AddScoped<conexion_bd_tecweb.Services.IBookService, conexion_bd_tecweb.Services.BookService>();
 builder.Services.AddScoped<conexion_bd_tecweb.Repositories.IBookRepository, conexion_bd_tecweb.Repositories.BookRepository>();
 
+builder.Services.AddScoped<conexion_bd_tecweb.Services.IGuestService, conexion_bd_tecweb.Services.GuestService>();
+builder.Services.AddScoped<conexion_bd_tecweb.Repositories.IGuestRepository, conexion_bd_tecweb.Repositories.GuestRepository>();
+
 builder.Services.AddScoped<conexion_bd_tecweb.Services.ITicketService, conexion_bd_tecweb.Services.TicketService>();
 builder.Services.AddScoped<conexion_bd_tecweb.Repositories.ITicketRepository, conexion_bd_tecweb.Repositories.TicketRepository>();
-
 
 var app = builder.Build();
 

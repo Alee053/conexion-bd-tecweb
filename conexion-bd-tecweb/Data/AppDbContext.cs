@@ -1,5 +1,6 @@
 ﻿using conexion_bd_tecweb.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace conexion_bd_tecweb.Data
 {
@@ -9,6 +10,7 @@ namespace conexion_bd_tecweb.Data
         
         }
         public DbSet<Book> Books => Set<Book>();
+        public DbSet<Guest> Guests => Set<Guest>();
         public DbSet<Ticket> Tickets => Set<Ticket>();
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -17,6 +19,12 @@ namespace conexion_bd_tecweb.Data
                 b.HasKey(x => x.Id);
                 b.Property(x => x.Title).IsRequired().HasMaxLength(200);
                 b.Property(x => x.Year).IsRequired();
+            });
+            modelBuilder.Entity<Guest>(b =>
+            {
+                b.HasKey(x => x.Id);
+                b.Property(x => x.FullName).IsRequired().HasMaxLength(200);
+                b.Property(x => x.Confirmed).IsRequired();
             });
             modelBuilder.Entity<Ticket>(b =>
             {
