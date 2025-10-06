@@ -17,5 +17,15 @@ namespace conexion_bd_tecweb.Repositories
             await _context.AddAsync(guest);
             await _context.SaveChangesAsync();
         }
+
+        public async Task Delete(Guid id)
+        {
+            var guest = await _context.Guests.FirstOrDefaultAsync(x => x.Id == id);
+            if (guest != null)
+            {
+                _context.Remove(guest);
+            }
+            await _context.SaveChangesAsync();
+        }
     }
 }
