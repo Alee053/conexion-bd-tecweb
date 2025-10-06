@@ -14,9 +14,6 @@ builder.Services.AddDbContext<conexion_bd_tecweb.Data.AppDbContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("Default"))
 );
 
-builder.Services.AddScoped<conexion_bd_tecweb.Services.IBookService, conexion_bd_tecweb.Services.BookService>();
-builder.Services.AddScoped<conexion_bd_tecweb.Repositories.IBookRepository, conexion_bd_tecweb.Repositories.BookRepository>();
-
 builder.Services.AddScoped<conexion_bd_tecweb.Services.IGuestService, conexion_bd_tecweb.Services.GuestService>();
 builder.Services.AddScoped<conexion_bd_tecweb.Repositories.IGuestRepository, conexion_bd_tecweb.Repositories.GuestRepository>();
 
