@@ -36,5 +36,14 @@ namespace conexion_bd_tecweb.Controllers
             var guest = await _service.Create(dto);
             return CreatedAtAction(nameof(GetOne), new { id = guest.Id }, guest);
         }
+
+        [HttpDelete("{id:guid}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var success = _service.Delete(id);
+            return await success
+                ? NoContent()
+                : NotFound(new { error = "Guest not found", status = 404 });
+        }
     }
 }
