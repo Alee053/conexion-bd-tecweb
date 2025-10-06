@@ -1,6 +1,4 @@
-﻿using apiwithdb.Models;
-using apiwithdb.Models.dtos;
-using conexion_bd_tecweb.Models;
+﻿using conexion_bd_tecweb.Models;
 using conexion_bd_tecweb.Models.dtos;
 using conexion_bd_tecweb.Repositories;
 

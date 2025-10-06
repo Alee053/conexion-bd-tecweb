@@ -1,5 +1,4 @@
-﻿using apiwithdb.Models;
-using conexion_bd_tecweb.Models;
+﻿using conexion_bd_tecweb.Models;
 
 namespace conexion_bd_tecweb.Repositories
 {
