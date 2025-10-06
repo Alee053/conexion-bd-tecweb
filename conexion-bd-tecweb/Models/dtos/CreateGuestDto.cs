@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
-namespace conexion_bd_tecweb.Models
+namespace conexion_bd_tecweb.Models.dtos
 {
-    public class Guest
+    public record CreateGuestDto
     {
-        public Guid Id { get; set; }
+        [Required, StringLength(200)]
         public string FullName { get; set; } = string.Empty;
+        [Required]
         public bool Confirmed { get; set; } = true;
     }
 }
