@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace apiwithdb.Models.dtos
+namespace conexion_bd_tecweb.Models.dtos
 {
     public record CreateBookDto
     {

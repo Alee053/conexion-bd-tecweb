@@ -1,13 +1,17 @@
-﻿using apiwithdb.Models;
-using apiwithdb.Data;
+﻿using conexion_bd_tecweb.Models;
+using conexion_bd_tecweb.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace apiwithdb.Repositories
+namespace conexion_bd_tecweb.Repositories
 {
     public class BookRepository : IBookRepository
     {
         private readonly AppDbContext _context;
 
+        public BookRepository(AppDbContext context)
+        {
+            _context = context;
+        }
 
         public async Task Add(Book book)
         {   
