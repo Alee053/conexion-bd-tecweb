@@ -13,5 +13,10 @@ namespace conexion_bd_tecweb.Controllers
         {
             _service = service;
         }
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            return Ok(await _service.GetAll());
+        }
     }
 }
