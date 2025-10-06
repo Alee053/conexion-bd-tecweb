@@ -24,5 +24,12 @@ namespace conexion_bd_tecweb.Services
             await _repo.Add(guest);
             return guest;
         }
+        public async Task<bool> Delete(Guid id)
+        {
+            var existing = _repo.GetById(id);
+            if (existing == null) return false;
+            await _repo.Delete(id);
+            return true;
+        }
     }
 }
